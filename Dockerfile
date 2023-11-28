@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # Install necessary packages
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-    apt-get install -y tree nano bash-completion git nginx  && \
+    apt-get install -y tree nano git nginx  && \
     apt-get clean
 
 # Set the working directory
@@ -45,9 +45,8 @@ WORKDIR /var/www/html/proyecto3
 RUN git clone https://github.com/IgnacioCG28/Examen2_IgnacioCarmonaGonzalez.git .
 
 WORKDIR /var/www/html
-RUN mkdir -p templates/error
-COPY 403.html /templates/error
-COPY 404.html /templates/error
+COPY 403.html /usr/share/nginx/html/
+COPY 404.html /usr/share/nginx/html/
 
 # Expose ports
 EXPOSE 8080

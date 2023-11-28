@@ -6,19 +6,19 @@ server {
 
 
 # error 404 personalizado
-        error_page 404 /templates/error/404.html;
-        location = /templates/error/404.html {
-           root /var/www/html;
-           internal;
-}
+        error_page 404 /404.html;
+        location = /404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
 
 
 # error 403 personalizado
-        error_page 403 /templates/error/403.html;
-        location = /templates/error/403.html {
-           root /var/www/html;
-           internal;
-}
+        error_page 403 /403.html;
+        location = /403.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
 
  root /var/www/html;
 
