@@ -15,6 +15,7 @@ RUN mkdir -p proyecto1 proyecto2 proyecto3 && \
 
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY default /etc/nginx/sites-enabled/default
 
 COPY proyecto1 /etc/nginx/sites-available/
 COPY proyecto2 /etc/nginx/sites-available/
@@ -38,12 +39,16 @@ WORKDIR /var/www/html/proyecto1
 RUN git clone https://github.com/IgnacioCG28/Ejercicio-bolas-cromaticas.git .
 
 WORKDIR /var/www/html/proyecto2
-RUN git clone https://github.com/IgnacioCG28/Proyecto2_IgnacioCarmonaGonzalez.git .
+RUN git clone https://github.com/IgnacioCG28/Lista-Tareas-POO.git .
 
 WORKDIR /var/www/html/proyecto3
 RUN git clone https://github.com/IgnacioCG28/Examen2_IgnacioCarmonaGonzalez.git .
 
 WORKDIR /var/www/html
+RUN mkdir -p templates/error
+COPY 403.html /templates/error
+COPY 404.html /templates/error
+
 # Expose ports
 EXPOSE 8080
 EXPOSE 8081
